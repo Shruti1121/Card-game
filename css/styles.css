@@ -1,0 +1,116 @@
+:root{
+  --bg:#0f172a;
+  --card-bg:#111827;
+  --accent:#06b6d4;
+  --card-front:#f3f4f6;
+  --card-back:#0b1220;
+}
+
+*{box-sizing:border-box}
+html,body{height:70%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+  background:linear-gradient(180deg,#071029 0%, #0b1220 100%);
+  color:#e6eef6;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:18px;
+  min-height:100vh;
+}
+
+.topbar{
+  width:100%;
+  max-width:980px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+  gap:12px;
+}
+.topbar .info span{
+  margin-right:12px;
+  font-weight:600;
+}
+.controls{display:flex;gap:8px;align-items:center}
+button,select{padding:8px 12px;border-radius:8px;border:none;background:#0b1220;color:#e6eef6;cursor:pointer}
+button:hover,select:hover{opacity:0.9}
+
+main{width:100%;max-width:980px;display:flex;justify-content:center;align-items:center}
+.grid{
+  width:100%;
+  display:grid;
+  gap:12px;
+  padding:12px;
+  align-items:stretch;
+  justify-items:stretch;
+}
+
+/* card tiles */
+.card{
+  perspective:1000px;
+  width:100%;
+  aspect-ratio: 3 / 4;
+  cursor:pointer;
+  position:relative;
+}
+.card-inner{
+  width:100%;
+  height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  transition: transform 400ms cubic-bezier(.2,.9,.3,1);
+  border-radius:12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+.card.flipped .card-inner{
+  transform: rotateY(180deg);
+}
+.card-face{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  backface-visibility:hidden;
+  border-radius:12px;
+  font-size:28px;
+  font-weight:700;
+}
+.card-back{
+  background:linear-gradient(180deg,var(--card-back),#071428);
+  color:var(--card-front);
+}
+.card-front{
+  background: transparent; /* Will be set dynamically via JavaScript */
+  transform: rotateY(180deg);
+  color: transparent; /* No text needed for color cards */
+  font-size:26px;
+}
+
+/* popup */
+.popup{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(2,6,23,0.6);
+}
+.popup-inner{
+  background:linear-gradient(180deg,#f8fafc,#eef2ff);
+  color:#031024;
+  padding:24px;
+  border-radius:12px;
+  min-width:320px;
+  text-align:center;
+}
+.hidden{display:none}
+
+/* responsive grid columns */
+@media (min-width:0px){
+  .grid[data-cols="3"]{grid-template-columns: repeat(3, 1fr);}
+  .grid[data-cols="4"]{grid-template-columns: repeat(4, 1fr);}
+  .grid[data-cols="5"]{grid-template-columns: repeat(5, 1fr);}
+}

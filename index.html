@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Card Match Challenge</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="info">
+      <span id="moves">Moves: 0</span>
+      <span id="matched">Matched: 0</span>
+      <span id="timer">Time: 00:00</span>
+    </div>
+    <div class="controls">
+      <select id="difficulty">
+        <option value="4x3">Easy (4x3)</option>
+        <option value="4x4" selected>Normal (4x4)</option>
+        <option value="5x4">Hard (5x4)</option>
+      </select>
+      <button id="restartBtn">Restart</button>
+    </div>
+  </div>
+
+  <main>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <div id="winPopup" class="popup hidden">
+    <div class="popup-inner">
+      <h2>You Win! 🎉</h2>
+      <p id="finalStats"></p>
+      <button id="playAgain">Play Again</button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
